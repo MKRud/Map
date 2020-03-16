@@ -2,114 +2,138 @@ var map1 = new Map(); // Виробник - Назва
 
 map1.set('Lenovo', 'Indea Pad 100-15 IBD')
     .set('Acer', 'Nitro 5')
+    .set('Acer', 'Nitro 5')
     .set('Xiaomi', 'Redmi 4X')
     .set('Bloody', 'V3M')
+    .set('Edifier', 'R19U')
     .set('Edifier', 'R19U');
 
 
 var map2 = new Map(); //Виробник - Вартість
 
-map2.set('Lenovo', 12600)
-    .set('Acer', 30000)
-    .set('Xiaomi', 3500)
-    .set('Bloody', 650)
-    .set('Edifier', 599);
+map2.set(12600, 'Lenovo')
+    .set(30000, 'Acer')
+    .set(3500, 'Xiaomi')
+    .set(650, 'Bloody')
+    .set(30000, 'Acer')
+    .set(599, 'Edifier')
+    .set(599, 'Edifier');
+
 
 
 var map3 = new Map(); //Виробник - Час доставки
 
-map3.set('Lenovo', 5)
-    .set('Acer', 4)
-    .set('Xiaomi', 2)
-    .set('Bloody', 1)
-    .set('Edifier', 2);
+map3.set(5, 'Lenovo')
+    .set(4, 'Acer')
+    .set(4, 'Acer')
+    .set(2, 'Xiaomi')
+    .set(1, 'Bloody')
+    .set(2, 'Edifier')
+    .set(2, 'Edifier');
 
+var a = 0;
+var c = 0;
+var minPrice, maxPrice, minTime, maxTime;
+var nameMinPrice, nameMaxPrice, nameMinTime, nameMaxTime;
 
-let lowPrice = function() {
-    let a = map2.get("Lenovo")
-    let b = map2.get("Acer")
-    let c = map2.get("Xiaomi")
-    let d = map2.get("Bloody")
-    let e = map2.get("Edifier")
-
-
-    if(a == Math.min(a, b, c, d, e)) {
-        console.log(`${map1.get("Lenovo")} / ${map2.get("Lenovo")} / Lenovo / ${map3.get("Lenovo")} day`)
-    }else if(b == Math.min(b, a, c, d, e)) {
-        console.log(`${map1.get("Acer")} / ${map2.get("Acer")} / Acer / ${map3.get("Acer")} day`)
-    }else if(c == Math.min(a, b, c, d, e)) {
-        console.log(`${map1.get("Xiaomi")} / ${map2.get("Xiaomi")} / Xiaomi / ${map3.get("Xiaomi")} day`)
-    }else if(d == Math.min(a, b, c, d, e)) {
-        console.log(`${map1.get("Bloody")} / ${map2.get("Bloody")} / Bloody / ${map3.get("Bloody")} day`)
-    }else if(e == Math.min(a, b, c, d, e)) {
-        console.log(`${map1.get("Edifier")} / ${map2.get("Edifier")} / Edifier / ${map3.get("Edifier")} day`)
+for (key of map2.keys()) {
+    if (a === 0) {
+        a += 1;
+        minPrice = key;
+        maxPrice = key;
+        nameMinPrice = map2.get(key);
+        nameMaxPrice = map2.get(key);
+    } else {
+        if (maxPrice < key) {
+            maxPrice = key;
+            nameMaxPrice = map2.get(key);
+        } else if (minPrice > key) {
+            minPrice = key;
+            nameMinPrice = map2.get(key);
+        }
     }
 }
 
-let lowTime = function() {
-    let a = map3.get("Lenovo")
-    let b = map3.get("Acer")
-    let c = map3.get("Xiaomi")
-    let d = map3.get("Bloody")
-    let e = map3.get("Edifier")
-
-
-    if(a == Math.min(a, b, c, d, e)) {
-        console.log(`${map1.get("Lenovo")} / ${map2.get("Lenovo")} / Lenovo / ${map3.get("Lenovo")} day`)
-    }else if(b == Math.min(b, a, c, d, e)) {
-        console.log(`${map1.get("Acer")} / ${map2.get("Acer")} / Acer / ${map3.get("Acer")} day`)
-    }else if(c == Math.min(a, b, c, d, e)) {
-        console.log(`${map1.get("Xiaomi")} / ${map2.get("Xiaomi")} / Xiaomi / ${map3.get("Xiaomi")} day`)
-    }else if(d == Math.min(a, b, c, d, e)) {
-        console.log(`${map1.get("Bloody")} / ${map2.get("Bloody")} / Bloody / ${map3.get("Bloody")} day`)
-    }else if(e == Math.min(a, b, c, d, e)) {
-        console.log(`${map1.get("Edifier")} / ${map2.get("Edifier")} / Edifier / ${map3.get("Edifier")} day`)
+for (key of map3.keys()) {
+    if (c === 0) {
+        c += 1;
+        minTime = key;
+        maxTime = key;
+        nameMinTime = map3.get(key);
+        nameMaxTime = map3.get(key);
+    } else {
+        if (maxTime < key) {
+            maxTime = key;
+            nameMaxTime = map3.get(key);
+        } else if (minTime > key) {
+            minTime = key;
+            nameMinTime = map3.get(key);
+        }
     }
 }
 
-let maxPrice = function() {
-    let a = map2.get("Lenovo")
-    let b = map2.get("Acer")
-    let c = map2.get("Xiaomi")
-    let d = map2.get("Bloody")
-    let e = map2.get("Edifier")
+obj = {};
 
+var date;
 
-    if(a == Math.max(a, b, c, d, e)) {
-        console.log(`${map1.get("Lenovo")} / ${map2.get("Lenovo")} / Lenovo / ${map3.get("Lenovo")} day`)
-    }else if(b == Math.max(b, a, c, d, e)) {
-        console.log(`${map1.get("Acer")} / ${map2.get("Acer")} / Acer / ${map3.get("Acer")} day`)
-    }else if(c == Math.max(a, b, c, d, e)) {
-        console.log(`${map1.get("Xiaomi")} / ${map2.get("Xiaomi")} / Xiaomi / ${map3.get("Xiaomi")} day`)
-    }else if(d == Math.max(a, b, c, d, e)) {
-        console.log(`${map1.get("Bloody")} / ${map2.get("Bloody")} / Bloody / ${map3.get("Bloody")} day`)
-    }else if(e == Math.max(a, b, c, d, e)) {
-        console.log(`${map1.get("Edifier")} / ${map2.get("Edifier")} / Edifier / ${map3.get("Edifier")} day`)
+for (valDate of map3.values()) {
+    for (keyDate of map3.keys()) {
+
+        if (valDate === nameMinPrice) {
+            if (map3.get(keyDate) === valDate)
+                date = keyDate;
+            obj[map1.get(nameMinPrice)] = {
+                minPrice,
+                nameMinPrice,
+                date
+            }
+        }
     }
 }
 
-let maxTime = function() {
-    let a = map3.get("Lenovo")
-    let b = map3.get("Acer")
-    let c = map3.get("Xiaomi")
-    let d = map3.get("Bloody")
-    let e = map3.get("Edifier")
+for (valDate of map3.values()) {
+    for (keyDate of map3.keys()) {
 
-
-    if(a == Math.max(a, b, c, d, e)) {
-        console.log(`${map1.get("Lenovo")} / ${map2.get("Lenovo")} / Lenovo / ${map3.get("Lenovo")} day`)
-    }else if(b == Math.max(b, a, c, d, e)) {
-        console.log(`${map1.get("Acer")} / ${map2.get("Acer")} / Acer / ${map3.get("Acer")} day`)
-    }else if(c == Math.max(a, b, c, d, e)) {
-        console.log(`${map1.get("Xiaomi")} / ${map2.get("Xiaomi")} / Xiaomi / ${map3.get("Xiaomi")} day`)
-    }else if(d == Math.max(a, b, c, d, e)) {
-        console.log(`${map1.get("Bloody")} / ${map2.get("Bloody")} / Bloody / ${map3.get("Bloody")} day`)
-    }else if(e == Math.max(a, b, c, d, e)) {
-        console.log(`${map1.get("Edifier")} / ${map2.get("Edifier")} / Edifier / ${map3.get("Edifier")} day`)
+        if (keyDate === minTime) {
+            if (map3.get(keyDate) === valDate)
+                date = keyDate;
+            obj[map1.get(nameMinTime)] = {
+                minPrice,
+                nameMinTime,
+                date
+            }
+        }
     }
 }
 
-lowPrice();
-lowTime();
-maxPrice();
-maxTime();
+for (valDate of map3.values()) {
+    for (keyDate of map3.keys()) {
+
+        if (valDate === nameMaxPrice) {
+            if (map3.get(keyDate) === valDate)
+                date = keyDate;
+            obj[map1.get(nameMaxPrice)] = {
+                maxPrice,
+                nameMaxPrice,
+                date
+            }
+        }
+    }
+}
+
+for (valDate of map3.values()) {
+    for (keyDate of map3.keys()) {
+
+        if (keyDate === maxTime) {
+            if (map3.get(keyDate) === valDate)
+                date = keyDate;
+            obj[map1.get(nameMaxTime)] = {
+                maxPrice,
+                nameMaxTime,
+                date
+            }
+        }
+    }
+}
+
+console.log(obj);
