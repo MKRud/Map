@@ -8,7 +8,6 @@ map1.set('Lenovo', 'Indea Pad 100-15 IBD')
     .set('Edifier', 'R19U')
     .set('Edifier', 'R19U');
 
-
 var map2 = new Map(); //Виробник - Вартість
 
 map2.set(12600, 'Lenovo')
@@ -19,14 +18,12 @@ map2.set(12600, 'Lenovo')
     .set(599, 'Edifier')
     .set(599, 'Edifier');
 
-
-
 var map3 = new Map(); //Виробник - Час доставки
 
 map3.set(5, 'Lenovo')
     .set(4, 'Acer')
     .set(4, 'Acer')
-    .set(2, 'Xiaomi')
+    .set(3, 'Xiaomi')
     .set(1, 'Bloody')
     .set(2, 'Edifier')
     .set(2, 'Edifier');
@@ -73,7 +70,6 @@ for (key of map3.keys()) {
 }
 
 obj = {};
-
 var date;
 
 for (valDate of map3.values()) {
@@ -97,8 +93,13 @@ for (valDate of map3.values()) {
         if (keyDate === minTime) {
             if (map3.get(keyDate) === valDate)
                 date = keyDate;
+                for (pri of map2.keys()){
+                    if (map2.get(pri) === nameMinTime){
+                        var price = pri
+                    }
+                }
             obj[map1.get(nameMinTime)] = {
-                minPrice,
+                price,
                 nameMinTime,
                 date
             }
@@ -127,8 +128,13 @@ for (valDate of map3.values()) {
         if (keyDate === maxTime) {
             if (map3.get(keyDate) === valDate)
                 date = keyDate;
+                for (pri of map2.keys()){
+                    if (map2.get(pri) === nameMaxTime){
+                        price = pri
+                    }
+                }
             obj[map1.get(nameMaxTime)] = {
-                maxPrice,
+                price,
                 nameMaxTime,
                 date
             }
